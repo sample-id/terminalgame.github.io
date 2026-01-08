@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Terminals Games | Next-Generation Gaming Experiences</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Three.js CDN (only 30 kB gzipped) -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <!-- 3-D Canvas Background -->
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- Cursor glow follower -->
+  <div id="cursorGlow"></div>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="container navContent">
+      <img src="assets/logo.svg" alt="Terminals Games" class="logo"/>
+      <nav>
+        <a href="#games">Games</a>
+        <a href="#about">About</a>
+        <a href="#tech">Tech</a>
+        <a href="#community">Community</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="hero" class="hero">
+    <div class="heroText">
+      <h1 class="glitch" data-text="Terminals Games">Terminals Games</h1>
+      <p class="tagline">Next-Generation Gaming Experiences</p>
+      <div class="ctaGroup">
+        <button class="btn primary">Explore Games</button>
+        <button class="btn secondary">Join the Community</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- GAMES -->
+  <section id="games" class="games container">
+    <h2>Our Games</h2>
+    <div class="gameGrid">
+      <!-- Card 1 -->
+      <article class="gameCard" data-tilt>
+        <div class="cardFront">
+          <img src="assets/game-covers/cover1.jpg" alt="Game 1"/>
+          <div class="cardInfo">
+            <h3>Neon Drifters</h3>
+            <span class="genre">Racing / Cyberpunk</span>
+            <span class="status">Launch 2025</span>
+          </div>
+        </div>
+      </article>
+      <!-- Duplicate 5× for demo -->
+      <article class="gameCard" data-tilt>
+        <div class="cardFront">
+          <img src="assets/game-covers/cover2.jpg" alt="Game 2"/>
+          <div class="cardInfo">
+            <h3>Quantum Siege</h3>
+            <span class="genre">FPS / Tactical</span>
+            <span class="status">Beta</span>
+          </div>
+        </div>
+      </article>
+      <!-- … add 4 more cards … -->
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about container">
+    <h2>Innovation First</h2>
+    <div class="storyPanel">
+      <p>Terminals Games is an independent studio crafting boundary-pushing worlds powered by proprietary engine tech and obsessive artistry.</p>
+    </div>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech" class="tech container">
+    <h2>Built on bleeding edge</h2>
+    <div class="techGrid">
+      <div class="techItem">
+        <div class="icon unreal"></div>
+        <span>Unreal Engine 5</span>
+      </div>
+      <div class="techItem">
+        <div class="icon unity"></div>
+        <span>Unity DOTS</span>
+      </div>
+      <div class="techItem">
+        <div class="icon webgl"></div>
+        <span>WebGL / WASM</span>
+      </div>
+      <div class="techItem">
+        <div class="icon steam"></div>
+        <span>Steam SDK</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY -->
+  <section id="community" class="community container">
+    <h2>Join the Conversation</h2>
+    <div class="socials">
+      <a class="social discord" href="#">Discord</a>
+      <a class="social twitter" href="#">Twitter</a>
+      <a class="social youtube" href="#">YouTube</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footerContent">
+      <img src="assets/logo.svg" alt="" class="logoSmall"/>
+      <span class="copyright">© <span id="year"></span> Terminals Games. All rights reserved.</span>
+    </div>
+  </footer>
+</body>
+</html>

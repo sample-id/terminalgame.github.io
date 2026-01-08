@@ -1,0 +1,226 @@
+/*==========  RESET  ==========*/
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif;
+  background:#0a0a0a;
+  color:#e4e4e4;
+  overflow-x:hidden;
+  cursor:none;
+}
+/*==========  COLORS  ==========*/
+:root{
+  --c1:#00f0ff;   /* electric blue */
+  --c2:#a200ff;   /* purple */
+  --c3:#ff0055;   /* red accent */
+  --glass:rgba(255,255,255,.05);
+}
+/*==========  CANVAS BG  ==========*/
+#bgCanvas{
+  position:fixed;
+  top:0;left:0;width:100%;height:100%;
+  z-index:-2;
+}
+/*==========  CURSOR GLOW  ==========*/
+#cursorGlow{
+  position:fixed;
+  width:400px;height:400px;
+  background: radial-gradient(circle, var(--c1) 0%, transparent 70%);
+  opacity:.18;
+  pointer-events:none;
+  z-index:-1;
+  transition:transform .08s ease;
+}
+/*==========  NAVBAR  ==========*/
+.navbar{
+  position:fixed;
+  top:0;left:0;right:0;
+  padding:1.2rem 0;
+  background:rgba(10,10,10,.5);
+  backdrop-filter:blur(10px);
+  z-index:100;
+}
+.navContent{
+  display:flex;align-items:center;justify-content:space-between;
+  max-width:1200px;margin:auto;padding:0 2rem;
+}
+.logo{height:2.2rem}
+nav a{
+  margin-left:2rem;
+  color:#fff;
+  text-decoration:none;
+  font-weight:500;
+  position:relative;
+}
+nav a::after{
+  content:'';
+  position:absolute;
+  left:0;bottom:-4px;
+  width:0;height:2px;
+  background:var(--c1);
+  transition:.3s;
+}
+nav a:hover::after{width:100%}
+/*==========  HERO  ==========*/
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;
+  padding:0 2rem;
+}
+.heroText h1{
+  font-size:clamp(3rem,8vw,6rem);
+  font-weight:900;
+  letter-spacing:-.04em;
+  margin-bottom:1rem;
+  position:relative;
+}
+/* Glitch effect */
+.glitch{
+  color:#fff;
+  text-transform:uppercase;
+}
+.glitch::before,
+.glitch::after{
+  content:attr(data-text);
+  position:absolute;
+  top:0;left:0;width:100%;height:100%;
+}
+.glitch::before{
+  animation: glitch-1 .4s infinite;
+  color:var(--c1);
+  z-index:-1;
+}
+.glitch::after{
+  animation: glitch-2 .4s infinite;
+  color:var(--c2);
+  z-index:-2;
+}
+@keyframes glitch-1{
+  0%,100%{clip-path:inset(0 0 0 0);transform:translate(0)}
+  20%{clip-path:inset(20% 0 50% 0);transform:translate(-2px,2px)}
+  40%{clip-path:inset(50% 0 20% 0);transform:translate(2px,-2px)}
+  60%{clip-path:inset(10% 0 80% 0);transform:translate(2px,2px)}
+  80%{clip-path:inset(80% 0 10% 0);transform:translate(-2px,-2px)}
+}
+@keyframes glitch-2{
+  0%,100%{clip-path:inset(0 0 0 0);transform:translate(0)}
+  20%{clip-path:inset(80% 0 10% 0);transform:translate(2px,-2px)}
+  40%{clip-path:inset(10% 0 80% 0);transform:translate(-2px,2px)}
+  60%{clip-path:inset(50% 0 20% 0);transform:translate(2px,2px)}
+  80%{clip-path:inset(20% 0 50% 0);transform:translate(-2px,-2px)}
+}
+.tagline{
+  font-size:1.25rem;
+  opacity:.7;
+  margin-bottom:2.5rem;
+}
+.ctaGroup{display:flex;gap:1.2rem;justify-content:center}
+.btn{
+  padding:.9rem 2.2rem;
+  border:none;border-radius:4px;
+  font-weight:600;
+  cursor:none;
+  transition:.3s;
+  position:relative;overflow:hidden;
+}
+.btn.primary{
+  background:linear-gradient(135deg,var(--c1),var(--c2));
+  color:#000;
+}
+.btn.secondary{
+  background:transparent;
+  border:1px solid var(--c1);
+  color:var(--c1);
+}
+.btn:hover{transform:translateY(-3px)}
+.btn::after{ /* glow */
+  content:'';
+  position:absolute;
+  top:50%;left:50%;
+  width:0;height:0;
+  background:radial-gradient(circle,rgba(255,255,255,.6) 0%,transparent 70%);
+  transition:.4s;
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+}
+.btn:hover::after{width:300px;height:300px}
+/*==========  SHARED CONTAINERS  ==========*/
+.container{max-width:1200px;margin:auto;padding:4rem 2rem}
+h2{font-size:2.5rem;margin-bottom:2.5rem;text-align:center}
+/*==========  GAME CARDS  ==========*/
+.gameGrid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:2rem;
+}
+.gameCard{
+  background:var(--glass);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:12px;
+  overflow:hidden;
+  transform-style:preserve-3d;
+  transition:transform .3s;
+  backdrop-filter:blur(8px);
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+.gameCard img{width:100%;height:200px;object-fit:cover}
+.cardInfo{padding:1.2rem}
+.cardInfo h3{font-size:1.3rem;margin-bottom:.4rem}
+.genre{font-size:.85rem;opacity:.7}
+.status{
+  display:inline-block;
+  margin-top:.6rem;
+  padding:.3rem .8rem;
+  border-radius:20px;
+  font-size:.75rem;
+  background:var(--c3);
+  color:#fff;
+}
+/*==========  ABOUT / TECH / COMMUNITY  ==========*/
+.storyPanel,
+.techGrid,
+.socials{
+  background:var(--glass);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:12px;
+  padding:2.5rem;
+  backdrop-filter:blur(8px);
+}
+.techGrid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:2rem;
+  text-align:center;
+}
+.icon{
+  width:60px;height:60px;margin:0 auto 1rem;
+  background-size:contain;
+  filter:drop-shadow(0 0 8px var(--c1));
+}
+.unreal{background:url(https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/unrealengine.svg) center no-repeat}
+.steam{background:url(https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/steam.svg) center no-repeat}
+.webgl{background:url(https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/webgl.svg) center no-repeat}
+.unity{background:url(https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/unity.svg) center no-repeat}
+.socials{display:flex;gap:1.2rem;justify-content:center}
+.social{
+  padding:.8rem 1.8rem;
+  border-radius:4px;
+  text-decoration:none;
+  font-weight:600;
+  transition:.3s;
+}
+.discord{background:#5865f2;color:#fff}
+.twitter{background:#000;color:#fff;border:1px solid #fff}
+.youtube{background:#ff0000;color:#fff}
+.social:hover{transform:translateY(-3px);box-shadow:0 0 20px var(--c1)}
+/*==========  FOOTER  ==========*/
+.footer{padding:3rem 0;text-align:center;opacity:.4;font-size:.9rem}
+.logoSmall{height:1.6rem;margin-bottom:.5rem}
+/*==========  RESPONSIVE  ==========*/
+@media(max-width:768px){
+  nav a{margin-left:1.2rem;font-size:.9rem}
+  .heroText h1{font-size:3rem}
+  .btn{width:100%}
+  .ctaGroup{flex-direction:column}
+}
